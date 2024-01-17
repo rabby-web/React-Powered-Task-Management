@@ -33,6 +33,10 @@ export default function TaskBoard() {
 
     setShowAddModal(false);
   }
+  function handleCloseClick() {
+    setShowAddModal(false);
+    setTaskToUpdate(null);
+  }
   function handleEditTask(task) {
     console.log("click edit");
     setTaskToUpdate(task);
@@ -45,6 +49,7 @@ export default function TaskBoard() {
         {showAddModal && (
           <AddTaskModal
             onSave={handleAddEditTask}
+            onCloseClick={handleCloseClick}
             taskToUpdate={taskToUpdate}
           />
         )}
