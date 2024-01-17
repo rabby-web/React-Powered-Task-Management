@@ -50,6 +50,12 @@ export default function TaskBoard() {
   function handleDeleteAllClick() {
     setTasks([...tasks]);
   }
+  function handleFavorite(taskId) {
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+    const newTasks = [...tasks];
+    newTasks[taskIndex].isFavorite = !newTasks[taskIndex].isFavorite;
+    setTasks(newTasks);
+  }
 
   return (
     <>
@@ -69,7 +75,11 @@ export default function TaskBoard() {
               onAddClick={() => setShowAddModal(true)}
               onDeleteAllClick={handleDeleteAllClick}
             />
-            <TaskList tasks={tasks} onEdit={handleEditTask} />
+            <TaskList
+              tasks={tasks}
+              onFav={handleFavorite}
+              onEdit={handleEditTask}
+            />
           </div>
         </div>
       </section>
