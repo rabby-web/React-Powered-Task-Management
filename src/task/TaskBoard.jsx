@@ -56,6 +56,9 @@ export default function TaskBoard() {
     newTasks[taskIndex].isFavorite = !newTasks[taskIndex].isFavorite;
     setTasks(newTasks);
   }
+  function handleSearch(searchTerm) {
+    console.log(searchTerm);
+  }
 
   return (
     <>
@@ -69,7 +72,7 @@ export default function TaskBoard() {
           />
         )}
         <div className="container">
-          <SearchTask />
+          <SearchTask onSearch={handleSearch} />
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
             <TaskActions
               onAddClick={() => setShowAddModal(true)}
